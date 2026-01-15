@@ -11,6 +11,9 @@ new #[Layout('layouts::app', ['title' => 'Create post'])] class extends Componen
 
     public function save()
     {
+
+        sleep(2);
+
         $validated = $this->validate([
             'title' => 'required|max:255',
             'content' => 'required',
