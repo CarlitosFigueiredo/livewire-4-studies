@@ -7,18 +7,22 @@
         </div>
 
         <div class="flex gap-2">
-             @if (count($this->selected) > 0)
-                <div class="max-lg:hidden flex justify-start items-center gap-2">
-                    <flux:subheading class="whitespace-nowrap">
 
-                        <span>{{ count($this->selected) }}</span> selected:
-                    </flux:subheading>
+            <div
+                wire:show="selected.length > 0"
+                wire:cloak
+                class="max-lg:hidden flex justify-start items-center gap-2"
+            >
+                <flux:subheading class="whitespace-nowrap">
 
-                    <flux:button size="sm" variant="danger" icon="trash" wire:click="deleteSelected">
-                        Delete
-                    </flux:button>
-                </div>
-            @endif
+                    <span wire:text="selected.length"></span> selected:
+                </flux:subheading>
+
+                <flux:button size="sm" variant="danger" icon="trash" wire:click="deleteSelected">
+                    Delete
+                </flux:button>
+            </div>
+
             <div class="max-lg:hidden flex justify-start items-center gap-2">
                 <flux:subheading class="whitespace-nowrap">Sort by:</flux:subheading>
 
