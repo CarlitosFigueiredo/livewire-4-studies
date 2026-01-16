@@ -31,7 +31,7 @@
                 <flux:sidebar.group expandable icon="star" heading="Favorites" class="grid">
                     <flux:sidebar.item href="#">Marketing site</flux:sidebar.item>
                     <flux:sidebar.item href="#">Android app</flux:sidebar.item>
-                    <flux:sidebar.item href="#">Brand guidelines</flux:sidebar.item>
+                    <flux:sidebar.item href="/analytics">Analytics</flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
             <flux:sidebar.spacer />
