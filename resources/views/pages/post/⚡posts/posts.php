@@ -6,7 +6,7 @@ use Livewire\Component;
 use App\Models\Post;
 use Livewire\Attributes\Lazy;
 
-new #[Lazy(), Title('Posts')] class extends Component
+new #[Title('Posts')] class extends Component
 {
     public string $sort = 'newest';
 
@@ -19,7 +19,7 @@ new #[Lazy(), Title('Posts')] class extends Component
                 'popular' => $q->orderBy('views', 'desc'),
                 default => $q->latest(),
             })
-            ->get();
+            ->paginate(20);
     }
 
     public function delete(Post $post)
