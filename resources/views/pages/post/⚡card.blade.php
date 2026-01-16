@@ -18,7 +18,7 @@ new class extends Component
     <flux:skeleton class="min-h56 rounded-lg" animate="shimer" />
 @endplaceholder
 
-<div class="flex flex-col justify-between p-4 rounded-lg min-h-56">
+<div {{ $attributes->class('flex flex-col justify-between p-4 rounded-lg min-h-56') }}>
 
     <div>
         <flux:heading size="lg">{{ $post->title }}</flux:heading>

@@ -19,7 +19,7 @@ new #[Title('Posts')] class extends Component
                 'popular' => $q->orderBy('views', 'desc'),
                 default => $q->latest(),
             })
-            ->paginate(20);
+            ->get();
     }
 
     public function delete(Post $post)

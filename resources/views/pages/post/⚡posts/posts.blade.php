@@ -29,6 +29,7 @@
             <livewire:pages::post.card :$post
                 :wire:key="$post->id"
                 :lazy.bundle="$loop->iteration > 6"
+                :class="$post->views > 500 ? 'border' : '' "
             />
         @endforeach
     </div>
