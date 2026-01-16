@@ -21,7 +21,17 @@ new class extends Component
 <div {{ $attributes->class('flex flex-col justify-between p-4 rounded-lg min-h-56') }}>
 
     <div>
-        <flux:heading size="lg">{{ $post->title }}</flux:heading>
+        <div class="flex items-center justify-between">
+            <flux:heading size="lg">{{ $post->title }}</flux:heading>
+
+
+            @if ($slots->has('checkbox'))
+                <div>
+                    {{ $slots['checkbox'] }}
+                </div>
+            @endif
+        </div>
+
         <flux:text class="mt-1 text-xs text-zinc-500">{{ $post->created_at->format('M d, Y') }}</flux:text>
         <flux:text class="mt-4 line-clamp-3">{{ $post->content }}</flux:text>
     </div>

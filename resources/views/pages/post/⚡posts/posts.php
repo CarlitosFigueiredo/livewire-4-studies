@@ -4,11 +4,11 @@ use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use App\Models\Post;
-use Livewire\Attributes\Lazy;
 
 new #[Title('Posts')] class extends Component
 {
     public string $sort = 'newest';
+    public array $selected = [];
 
     #[Computed]
     public function posts()
@@ -22,8 +22,10 @@ new #[Title('Posts')] class extends Component
             ->get();
     }
 
-    public function delete(Post $post)
+    public function deleteSelected()
     {
-        $post->delete();
+        Post::whereIn('id', $this->selected)->delete();
+
+        $this->selected = [];
     }
 };
