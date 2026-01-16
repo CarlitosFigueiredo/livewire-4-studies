@@ -17,20 +17,26 @@
 
     <div class="mt-8 grid grid-cols-3 gap-6 relative">
 
-        @island
+        @island(name: "metrics")
             <x-pages::analytics.metric heading="Views" :number="$this->views" :change="12">
-
-                <flux:button wire:click="$refresh" icon="arrow-path" variant="subtle" size="sm" />
             </x-pages::analytics.metric>
         @endisland
 
-        <x-pages::analytics.metric heading="Visitors" :number="$this->visitors" :change="8">
-            <!-- ... -->
-        </x-pages::analytics.metric>
+        @island(name: "metrics")
+            <x-pages::analytics.metric heading="Visitors" :number="$this->visitors" :change="8">
+            </x-pages::analytics.metric>
+        @endisland
 
-        <x-pages::analytics.metric heading="Avg time on post" :number="$this->avgTime" :change="-3">
-            <!-- ... -->
-        </x-pages::analytics.metric>
+
+        @island(name: "metrics")
+            <x-pages::analytics.metric heading="Avg time on post" :number="$this->avgTime" :change="-3">
+            </x-pages::analytics.metric>
+        @endisland
+
+        <div class="absolute top-0 bottom-0 left-[100%] pl-4 flex">
+
+            <flux:button wire:click="$refresh" wire:island="metrics" icon="arrow-path" variant="subtle" size="sm" />
+        </div>
     </div>
 
     <div class="mt-8">
