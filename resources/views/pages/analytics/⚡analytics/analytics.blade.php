@@ -17,7 +17,7 @@
 
     <div class="mt-8 grid grid-cols-3 gap-6 relative">
 
-        @island(name: "metrics", lazy: true)
+        @island(name: "metrics", lazy: true, always: true)
 
             @placeholder
 
