@@ -4,10 +4,14 @@ use App\Analytics;
 use Livewire\Component;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\Url;
 
 new #[Title('Analytics')] class extends Component
 {
     public string $period = 'month';
+
+    #[Url()]
+    public int $postsPage = 1;
 
     #[Computed]
     public function views()
@@ -30,7 +34,7 @@ new #[Title('Analytics')] class extends Component
     #[Computed]
     public function topPosts()
     {
-        return Analytics::period($this->period)->topPosts();
+        return Analytics::period($this->period)->topPosts(page: $this->postsPage);
     }
 
     #[Computed]
@@ -39,5 +43,18 @@ new #[Title('Analytics')] class extends Component
         return Analytics::period($this->period)->topCountries();
     }
 
+    public function updating($property)
+    {
+        if ($property === 'period') {
+
+            $this->reset('postsPage');
+
+            $this->renderIsland('posts');
+        }
+    }
+
+    public function loadMorePosts()
+    {
+        $this->postsPage++;
+    }
 }
-?>
